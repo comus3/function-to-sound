@@ -17,16 +17,21 @@ if __name__ == "__main__":
     """
     func = lambda t, frequency:7 * np.sin(np.sin(2 * np.pi * frequency * t)*t)
     #func = lambda t, frequency:10 * np.tan(np.sin(2 * np.pi * frequency * t))
+    #func = lambda t, frequency:7 * np.arctan(np.sin(np.sin(2 * np.pi * frequency * t)*t))
     #interface
     import tkinter as tk
     from tkinter import messagebox
+    def openOutput():
+        import os
+        os.startfile("output.wav")
     def generateWavButtonClicked():
         try:
-            frequency = float(freq_entry.get()) * (np.pi / 12.0)
+            frequency = float(freq_entry.get())
             duration = float(duration_entry.get())
-            if 0 <= frequency <= 10000 and 0 <= duration <= 60:
+            if 0 <= frequency <= 90000 and 0 <= duration <= 60:
                 generateWav(func,frequency, duration)
                 messagebox.showinfo("Success", "WAV file generated successfully!")
+                openOutput()
                 root.quit()
             else:
                 messagebox.showerror("Error", "Invalid parameter values. Frequency must be in [0, 10 000] and duration in [0, 60].")
@@ -35,7 +40,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.title("WAV Generator")
 
-    freq_label = tk.Label(root, text="Frequency (0 to 10π/12):")
+    freq_label = tk.Label(root, text="Frequency (0 to 90 000):")
     freq_label.pack()
     freq_entry = tk.Entry(root)
     freq_entry.pack()
