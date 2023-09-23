@@ -15,7 +15,7 @@ if __name__ == "__main__":
     duration = 3  # Durée en secondes
     generateWav(func, interval, duration, output_file="output.wav")
     """
-    func = lambda t, frequency:10 * np.sin(2 * np.pi * frequency * t)
+    func = lambda t, frequency:10 * np.sin(np.sin(2 * np.pi * frequency * t)*t)
     #interface
     import tkinter as tk
     from tkinter import messagebox
