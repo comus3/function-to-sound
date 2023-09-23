@@ -15,7 +15,8 @@ if __name__ == "__main__":
     duration = 3  # Durée en secondes
     generateWav(func, interval, duration, output_file="output.wav")
     """
-    func = lambda t, frequency:10 * np.sin(np.sin(2 * np.pi * frequency * t)*t)
+    func = lambda t, frequency:7 * np.sin(np.sin(2 * np.pi * frequency * t)*t)
+    #func = lambda t, frequency:10 * np.tan(np.sin(2 * np.pi * frequency * t))
     #interface
     import tkinter as tk
     from tkinter import messagebox
@@ -23,12 +24,12 @@ if __name__ == "__main__":
         try:
             frequency = float(freq_entry.get()) * (np.pi / 12.0)
             duration = float(duration_entry.get())
-            if 0 <= frequency <= 10 and 0 <= duration <= 60:
+            if 0 <= frequency <= 10000 and 0 <= duration <= 60:
                 generateWav(func,frequency, duration)
                 messagebox.showinfo("Success", "WAV file generated successfully!")
                 root.quit()
             else:
-                messagebox.showerror("Error", "Invalid parameter values. Frequency must be in [0, 10] and duration in [0, 60].")
+                messagebox.showerror("Error", "Invalid parameter values. Frequency must be in [0, 10 000] and duration in [0, 60].")
         except ValueError:
             messagebox.showerror("Error", "Invalid input. Please enter valid numbers.")
     root = tk.Tk()
