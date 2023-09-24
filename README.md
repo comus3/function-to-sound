@@ -42,7 +42,7 @@ To use this code and GUI:
 
 Here's an example of how to use the GUI to generate a custom WAV file:
 
-1. Enter the desired frequency (0 to 10π/12) and duration (0 to 60 seconds) in their respective input fields.
+1. Enter the desired frequency (0 to 10 000 Hz) and duration (0 to 60 seconds) in their respective input fields.
 2. Click the "Generate WAV" button.
 3. If valid parameters are entered, a WAV file will be generated, and a success message will be displayed. The WAV file will be saved as "output.wav" in the same directory as the script.
 4. If invalid parameters are entered, an error message will be displayed.
