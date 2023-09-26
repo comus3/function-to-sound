@@ -1,10 +1,15 @@
 import numpy as np
 import math
 from scipy.io import wavfile
+import funcLib
+
 #make wav file
 def generateWav(func, frequency, duration, sample_rate=44100, amplitude=1.0, output_file="output.wav"):
     t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
     y = func(t, frequency)
+    wavfile.write(output_file, sample_rate, y.astype(np.float32))
+
+def generateWav2(y,sample_rate=44100, output_file="output.wav"):
     wavfile.write(output_file, sample_rate, y.astype(np.float32))
 
 if __name__ == "__main__":
@@ -15,9 +20,7 @@ if __name__ == "__main__":
     duration = 3  # Durée en secondes
     generateWav(func, interval, duration, output_file="output.wav")
     """
-    func = lambda t, frequency:7 * np.sin(np.sin(2 * np.pi * frequency * t)*t)
-    #func = lambda t, frequency:10 * np.tan(np.sin(2 * np.pi * frequency * t))
-    #func = lambda t, frequency:7 * np.arctan(np.sin(np.sin(2 * np.pi * frequency * t)*t))
+    func = funcLib.blaster
     #interface
     import tkinter as tk
     from tkinter import messagebox
